@@ -1,8 +1,42 @@
-.col-md-12
-    .col-md-3
-    .col-md-6
-        %h1 RedeemAmazonGc#index
-        %p Find me in app/views/redeem_amazon_gc/index.html.erb
-    .col-md-6
+.row-fluid
+    .col-md-12
+        .col-md-3
+        .col-md-6
+            .row-fluid
+            %h1 Redeem Amazon Gift Card
+            %div
+                %ul.nav.nav-tabs{:role => "tablist"}
+                    %li{:role => "presentation"}
+                        %a{"aria-controls" => "settings", "data-toggle" => "tab", :href => "#settings", :role => "tab"} Settings
+                    %li.active{:role => "presentation"}
+                        %a{"aria-controls" => "account", "data-toggle" => "tab", :href => "#account", :role => "tab", "aria-expanded" => "true"} Retailer Accounts
+                    %li{:role => "presentation"}
+                        %a{"aria-controls" => "mycode", "data-toggle" => "tab", :href => "#mycode", :role => "tab"} My Codes
+                / Tab panes
+                .tab-content
+                    #settings.tab-pane{:role => "tabpanel"} 
+                    #account.tab-pane.active{:role => "tabpanel"}
+                        .row-fluid
+                            %form{:action => "add-new-account"}
+                                %h3 Retailer Accounts
+                                %h4 Add Retailer Account
+                                .form-group
+                                    %span Retailer
+                                    %input#retailer.form-control{:placeholder => "Amazon.com"}
+                                .form-group
+                                    %span Amazon Email
+                                    %input#email.form-control{:type => "email"}
+                                .form-group
+                                    %span Amazon Password
+                                    %input#password.form-control{:type => "password"}
+                                .form-group
+                                    %span Zip or Postal Code
+                                    %input#zip.form-control
+                                .form-group
+                                    %span Phone Number
+                                    %input#phone.form-control{:type => "phone"}
+                                %input.btn.btn-primary{:type => "submit", :value => "Add Retailer Account"}
+                    #mycode.tab-pane{:role => "tabpanel"} ...
+        .col-md-3
 
 
