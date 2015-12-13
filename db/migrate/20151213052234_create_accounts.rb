@@ -1,0 +1,13 @@
+class CreateAccounts < ActiveRecord::Migration
+  def change
+    create_table :accounts do |t|
+      t.string :retailer
+      t.string :email
+      t.string :password
+      t.string :zip
+      t.string :phone
+
+      t.timestamps null: false
+    end
+  end
+end

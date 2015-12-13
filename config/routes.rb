@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'redeem_amazon_gc#index'
    get 'add-new-account' => 'redeem_amazon_gc#addAccount'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
