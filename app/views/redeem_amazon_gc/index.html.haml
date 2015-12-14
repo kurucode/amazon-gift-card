@@ -16,41 +16,19 @@
                 .tab-content
                     #settings.tab-pane{:role => "tabpanel"} 
                     #account.tab-pane.active{:role => "tabpanel"}
-                        .row-fluid
-                            %form{:action => "add-new-account"}
-                                %h3 Retailer Accounts
-                                %h4 Add Retailer Account
-                                .form-group
-                                    %span Retailer
-                                    %input#retailer.form-control{:placeholder => "Amazon.com", :name => "retailer"}
-                                .form-group
-                                    %span Amazon Email
-                                    %input#email.form-control{:type => "email", :name => "email"}
-                                .form-group
-                                    %span Amazon Password
-                                    %input#password.form-control{:type => "password", :name => "password"}
-                                .form-group
-                                    %span Zip or Postal Code
-                                    %input#zip.form-control{:name => "zip"}
-                                .form-group
-                                    %span Phone Number
-                                    %input#phone.form-control{:type => "phone", :name => "phone"}
-                                %input.btn.btn-primary{:type => "submit", :value => "Add Retailer Account"}
+                        .row-fluid{:style => "padding: 20px 0"}
+                            - if @acct
+                                %form{:action => "update-account/#{@acct.id}", :method => "POST"}
+                                    = render 'form'
+                            - else
+                                %form{:action => "add-new-account", :method => "POST"}
+                                    = render 'form'
                     #mycode.tab-pane{:role => "tabpanel"} 
                         .row-fluid
-                            - if @request.success?
-                                - @request.results.each do |activity|
-                                    = activity.status # => SUCCESS, FAILURE, RESEND
-                                    = activity.created_at
-                                    = activity.type
-                                    = activity.card_number
-                                    = activity.amount
-                                    = activity.error_code
-                                    = activity.gc_id
-                                    = activity.partner_id
-                                    = activity.request_id
-                            - else
-                                = @request.error_message 
+                            - if @acct
+                                %h3 Account Gift Card Activity
+                            -else
+                                %h3 There is no registered account
         .col-md-3
 
 

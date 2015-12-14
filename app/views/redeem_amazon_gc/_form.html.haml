@@ -1,0 +1,38 @@
+%h3 Retailer Accounts
+- if @acct
+    %h4 Update Retailer Account
+- else
+    %h4 Add Retailer Account
+
+.form-group
+    %span Retailer
+    - if @acct
+        %input#retailer.form-control{:placeholder => "Amazon.com", :name => "mem[retailer]", :value => "#{@acct.retailer}"}
+    -else
+        %input#retailer.form-control{:placeholder => "Amazon.com", :name => "mem[retailer]"}
+.form-group
+    %span Amazon Email
+    - if @acct
+        %input#email.form-control{:type => "email", :name => "mem[email]", :value => "#{@acct.email}"}
+    -else
+        %input#email.form-control{:type => "email", :name => "mem[email]"}
+.form-group
+    %span Amazon Password
+    %input#password.form-control{:type => "password", :name => "mem[password]"}
+.form-group
+    %span Zip or Postal Code
+    - if @acct
+        %input#zip.form-control{:name => "mem[zip]", :value=> "#{@acct.zip}"}
+    - else
+        %input#zip.form-control{:name => "mem[zip]"}
+.form-group
+    %span Phone Number
+    - if @acct
+        %input#phone.form-control{:type => "phone", :name => "mem[phone]", :value => "#{@acct.phone}"}
+    - else
+        %input#phone.form-control{:type => "phone", :name => "mem[phone]"}
+- if @acct
+    %input.btn.btn-primary{:type => "submit", :value => "Update Retailer Account"}
+    = link_to "Delete Account", "/delete-account/#{@acct.id}", method: :delete, confirm: "Do you want to remove this account", class: "btn btn-danger"
+- else
+    %input.btn.btn-primary{:type => "submit", :value => "Add Retailer Account"}

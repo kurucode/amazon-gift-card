@@ -1,21 +1,27 @@
-require "aws_agcod"
+require "nokogiri"
 class RedeemAmazonGcController < ApplicationController
     def index
-        AGCOD.configure do |config|
-            config.access_key = "..."
-            config.secret_key = "..."
-            config.partner_id = "..."
-        end
-        request_id = "test"
-        start_time = Time.now - 86400*3
-        end_time = Time.now
-        page = 1
-        per_page = 100
-        show_no_ops = true
-        @request = AGCOD::GiftCardActivityList.new(request_id, start_time, end_time, page, per_page, show_no_ops)
+        @acct = Account.first
     end
     def addAccount
-
+        acct = Account.new(post_params)
+        acct.save
         redirect_to root_path
+    end
+    def deleteAccount
+        acct = Account.find(params[:id])
+        acct.destroy
+        redirect_to root_path
+    end
+    def updateAccount
+        acct = Account.find(params[:id])
+        acct.update(post_params)
+        redirect_to root_path
+    end
+
+    private
+
+    def post_params
+      params.require(:mem).permit(:retailer, :email, :password, :zip, :phone)
     end
 end
