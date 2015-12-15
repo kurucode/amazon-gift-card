@@ -9,6 +9,8 @@ Rails.application.routes.draw do
    post 'add-new-account' => 'redeem_amazon_gc#addAccount'
    delete 'delete-account/:id' => 'redeem_amazon_gc#deleteAccount' 
    post 'update-account/:id' => 'redeem_amazon_gc#updateAccount'
+   get  'redeem-code' => 'redeem_gc_code#index'
+   post 'apply-code' => 'redeem_gc_code#apply'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

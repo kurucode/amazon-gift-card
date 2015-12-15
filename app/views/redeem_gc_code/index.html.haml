@@ -1,0 +1,17 @@
+.row-fluid
+    .col-md-3
+    .col-md-6
+        %h3 My Code Activities
+        %form{:action => "/apply-code", :method => "POST"}
+            .form-group
+                %span Redeem Gift Claim Code
+                %br
+                = @search_result
+                //%table
+                //    - @search_result.links.each do |link|
+                //       %tr
+                //            %td #{link.text}
+
+                %input{:name => "code"}
+                %input.btn.btn-primary{:type => "submit", :value => "Apply Claim Code"}
+    .col-md-3
